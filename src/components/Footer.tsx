@@ -1,8 +1,7 @@
 import React from "react";
 
-interface FooterProps {}
 
-const Footer: React.FC<FooterProps> = ({}) => {
+const Footer: React.FC = ({}) => {
   return (
     <footer className="text-center text-white bg-neutral-200 dark:bg-neutral-600">
       <div className="container pt-9"></div>
