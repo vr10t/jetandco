@@ -3,7 +3,12 @@ import { type Config } from "tailwindcss";
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        hepta: ["Hepta Slab", "serif"],
+      },
+    },
+    plugins: [],
   },
-  plugins: [],
-} satisfies Config;
+} as Config;
