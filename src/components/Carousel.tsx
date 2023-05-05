@@ -1,17 +1,15 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import BeforeAfterImage from './BeforeAfterImage';
-import ImageSlider from 'react-before-after-slider-component'
-import 'react-before-after-slider-component/dist/build.css'
+import BeforeAfterImage from "./BeforeAfterImage";
+import ImageSlider from "react-before-after-slider-component";
+import "react-before-after-slider-component/dist/build.css";
 
 export interface CarouselProps {
   items: {
-    image?: string;
+    image: string;
     title: string;
     description: string;
-    before?: string;
-    after?: string;
   }[];
 }
 
@@ -45,32 +43,26 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   };
 
   return (
-    <div
-      className="relative flex h-96 w-full justify-center overflow-hidden "
-    >
+    <div {...handlers} className="relative flex h-96 w-full justify-center overflow-hidden ">
       <div className="relative flex w-full items-start justify-center">
         {items.map((item, index) => {
           return (
             <div
               key={index}
-              className={`absolute mb-12 w-2/3 transform px-6 transition-transform duration-500 ${getItemClassName(
+              className={`absolute mb-12 w-full sm:w-2/3 transform px-12 transition-transform duration-500 ${getItemClassName(
                 index
               )}`}
             >
-              <div className="h-56 w-96 relative overflow-hidden ">
-                {item.before && item.after ? (
-                  <ImageSlider firstImage={{imageUrl:item.before}} secondImage={{imageUrl:item.after}} />
-                ):
-              <Image
-                draggable={false}
-                className="object-cover h-full w-full"
-                src={item.image ?? ""}
-                width={300}
-                height={200}
-                unoptimized
-                alt={item.title}
-              />}
-                
+              <div className="relative h-56 w-96 overflow-hidden ">
+                  <Image
+                    draggable={false}
+                    className="h-full w-full object-cover"
+                    src={item.image}
+                    width={300}
+                    height={200}
+                    unoptimized
+                    alt={item.title}
+                  />
               </div>
               <h4 className="font-heading mb-3 mt-6 text-xl font-bold">
                 {item.title}
@@ -117,6 +109,5 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
     </div>
   );
 };
-
 
 export default Carousel;

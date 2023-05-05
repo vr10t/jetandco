@@ -10,51 +10,40 @@ import {
 } from "./Content";
 
 const MainPage: React.FC = () => {
-  const items = [
-    {
-      before: "driveway-clean-before.jpg",
-      after:
-        "driveway-clean-after.jpg",
-      title: "Driveway Cleaning",
-      description:
-        "Revitalize your driveway with our pressure washing and optional sealing services.",
-    },
-    {
-      image:
-        "roof-cleaning.jpg",
-      title: "Roof Cleaning",
-      description:
-        "Remove moss, algae, and dirt gently with our expert roof cleaning service.",
-    },
-    {
-      before: "deck-cleaning-before.jpg",
-      after:
-        "deck-cleaning-after.jpg",
-      title: "Exterior Cleaning",
-      description:
-        "Enhance curb appeal with our comprehensive exterior cleaning for walls and fences.",
-    },
-    {
-      before: "pavement-cleaning-before.jpg",
-      after:
-        "pavement-cleaning-after.jpg",
-      title: "Concrete Cleaning",
-      description:
-        "Restore concrete surfaces like walkways, patios, and parking lots with our pressure washing.",
-    },
-  ];
   return (
     <div className="min-h-screen bg-white px-4 py-8">
-      <h1 className="mb-6 text-center text-3xl lg:text-4xl font-bold">The Ultimate Pressure Washing Services</h1>
-      <p className="mb-6 text-lg">
-        We pride ourselves on delivering the best pressure cleaning services in
-        the area. Using state-of-the-art powerwashers and power pressure washer
-        equipment, our team can tackle even the toughest cleaning jobs. From
-        driveway pressure washer cleaning to concrete cleaning and washing
-        services, we have you covered.
-      </p>
+      <GallerySection
+        items={[
+          {
+            image: {
+              before: "driveway-clean-before.jpg",
+              after: "driveway-clean-after.jpg",
+            },
+            title: "Driveway Cleaning",
+            description:
+              "Revitalize your driveway with our pressure washing and optional sealing services.",
+          },
+          {
+            image: {
+              before: "deck-cleaning-before.jpg",
+              after: "deck-cleaning-after.jpg",
+            },
+            title: "Exterior Cleaning",
+            description:
+              "Enhance curb appeal with our comprehensive exterior cleaning for walls and fences.",
+          },
+          {
+            image: {
+              before: "pavement-cleaning-before.jpg",
+              after: "pavement-cleaning-after.jpg",
+            },
+            title: "Concrete Cleaning",
+            description:
+              "Restore concrete surfaces like walkways, patios, and parking lots with our pressure washing.",
+          },
+        ]}
+      />
       <Section1
-
         title=" Expert Driveway Cleaning Service in Hemel Hempstead "
         text1="Driveway cleaning is one of our specialties, using high-quality driveway
         pressure cleaning techniques to remove dirt, grime, and stains from your
@@ -76,10 +65,33 @@ const MainPage: React.FC = () => {
         reverse
       />
 
-
-
       <CarouselWithContent
-        items={items}
+        items={[
+          {
+            image: "roof-cleaning.jpg",
+            title: "Roof Cleaning",
+            description:
+              "Remove moss, algae, and dirt gently with our expert roof cleaning service.",
+          },
+          {
+            image: "driveway-clean-after.jpg",
+            title: "Driveway Cleaning",
+            description:
+              "Revitalize your driveway with our pressure washing and optional sealing services.",
+          },
+          {
+            image: "tiles-half.jpeg",
+            title: "Exterior Cleaning",
+            description:
+              "Enhance curb appeal with our comprehensive exterior cleaning for walls and fences.",
+          },
+          {
+            image: "removing-dirt-1.jpeg",
+            title: "Concrete Cleaning",
+            description:
+              "Restore concrete surfaces like walkways, patios, and parking lots with our pressure washing.",
+          },
+        ]}
         title="
             Professional Exterior Cleaning Services
             "
@@ -151,34 +163,6 @@ const MainPage: React.FC = () => {
         ]}
       />
 
-      {/* <GallerySection
-        items={[
-          {
-            image: "https://via.placeholder.com/150",
-            title: "Driveway Cleaning",
-            description:
-              "Revitalize your driveway with our pressure washing and optional sealing services.",
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            title: "Roof Cleaning",
-            description:
-              "Remove moss, algae, and dirt gently with our expert roof cleaning service.",
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            title: "Exterior Cleaning",
-            description:
-              "Enhance curb appeal with our comprehensive exterior cleaning for walls and fences.",
-          },
-          {
-            image: "https://via.placeholder.com/150",
-            title: "Concrete Cleaning",
-            description:
-              "Restore concrete surfaces like walkways, patios, and parking lots with our pressure washing.",
-          },
-        ]}
-      /> */}
       <Jumbotron
         title="Unparalleled Pressure Cleaning Services"
         linkText="Get your free quote Now"

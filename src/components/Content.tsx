@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel, { type CarouselProps } from "./Carousel";
+import ImageSlider from "react-before-after-slider-component";
 
 interface Section1Props {
   title: string;
@@ -26,22 +27,27 @@ const Section1: React.FC<Section1Props> = ({
         <div className="container relative z-10 mx-auto text-center lg:text-left xl:px-32">
           <div
             className={`flex items-center ${
-              reverse ? "flex-col-reverse lg:flex-row-reverse" : "flex-col lg:flex-row "
+              reverse
+                ? "flex-col-reverse lg:flex-row-reverse"
+                : "flex-col lg:flex-row "
             }`}
           >
-            <div className="w-full lg:w-1/2 relative ">
-              <div className="h-[30rem] relative rounded-lg shadow-lg" >
-              <Image
-              unoptimized
-                src={"/"+image}
-                className="object-cover rounded-lg shadow-lg"
-                alt={image.replace(/.*\//, "")}
-                fill
-              /></div>
+            <div className="relative w-full lg:w-1/2 ">
+              <div className="relative h-[30rem] rounded-lg shadow-lg">
+                <Image
+                  unoptimized
+                  src={"/" + image}
+                  className="rounded-lg object-cover shadow-lg"
+                  alt={image.replace(/.*\//, "")}
+                  fill
+                />
               </div>
-            <div className="mb-12 lg:w-1/2 lg:mb-0">
+            </div>
+            <div className="mb-12 lg:mb-0 lg:w-1/2">
               <div
-                className={`backdrop-blur-2xl bg-white/50 block rounded-lg px-6 py-12 shadow-lg md:px-12 ${reverse ? "lg:-mr-14" : "lg:-ml-14"}`}
+                className={`block rounded-lg bg-white/50 px-6 py-12 shadow-lg backdrop-blur-2xl md:px-12 ${
+                  reverse ? "lg:-mr-14" : "lg:-ml-14"
+                }`}
               >
                 <h2 className="mb-6 text-3xl font-bold">{title}</h2>
                 <p className="mb-6 pb-2 text-gray-500 lg:pb-0">{text1}</p>
@@ -135,8 +141,8 @@ interface CheckmarkProps {
 }
 const CheckmarksSection: React.FC<CheckmarkProps> = ({ title, items }) => {
   return (
-    <section className="relative px-6 flex flex-col justify-center items-center">
-      <div className="max-w-screen-xl flex justify-center px-6 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+    <section className="relative flex flex-col items-center justify-center px-6">
+      <div className="flex max-w-screen-xl justify-center px-6 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="">
           <h2 className="text-3xl font-bold sm:text-4xl">{title}</h2>
           {items.map((item, index) => (
@@ -160,7 +166,7 @@ const CheckmarksSection: React.FC<CheckmarkProps> = ({ title, items }) => {
         {/* <Link href="/contact" className="btn">
           Get A Quote Now
         </Link> */}
-</div>
+      </div>
     </section>
   );
 };
@@ -264,31 +270,58 @@ const Section3: React.FC<Section3Props> = ({
 };
 interface GallerySectionProps {
   items: {
-    image: string;
+    image: {
+      before: string;
+      after: string;
+    };
     title: string;
-    description: string;
+    description?: string;
   }[];
 }
 const GallerySection: React.FC<GallerySectionProps> = ({ items }) => {
   return (
     <div className="container mx-auto my-24 px-6">
       <section className="mb-24">
-        <div className="-mx-6 flex flex-wrap items-center">
-          <div className="grid w-full grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="-mx-6 flex flex-col items-center lg:flex-row">
+          <div className="mb-6 lg:w-1/2">
+            <h2 className="text-3xl font-bold">
+              Experience the Transformation
+            </h2>
+            <p className="mt-4 text-gray-500">
+              Witness the remarkable difference our pressure washing services
+              can make. From dingy driveways to weathered exteriors, our team&apos;s
+              expertise in utilizing top-quality pressure washers brings new
+              life to your property. The dramatic visual contrast highlights our
+              commitment to excellence and customer satisfaction. Discover how
+              our services can rejuvenate your home or business, making it look
+              like new again.
+            </p>
+          </div>
+          <div className="flex w-full flex-wrap justify-center gap-6 px-6 md:grid-cols-2 lg:grid-cols-3">
             {items.map((item, index) => (
               <div
                 key={`Gallery-${index}`}
-                className="flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg"
+                className="relative h-44  w-72 overflow-hidden rounded-lg shadow-lg"
               >
-                <img
-                  className="mb-6 h-auto w-full rounded-lg"
-                  src={item.image}
-                  alt=""
+                <div className="relative z-10 h-0 w-full bg-red-500">
+                  <div className="absolute left-2 top-4 rounded bg-black/50 px-1 text-white">
+                    Before
+                  </div>
+                  <div className="absolute right-2 top-4 rounded bg-black/50 px-1 text-white">
+                    After
+                  </div>
+                </div>
+                <ImageSlider
+                  className=""
+                  secondImage={{
+                    imageUrl: item.image.before,
+                    alt: item.title + " Before",
+                  }}
+                  firstImage={{
+                    imageUrl: item.image.after,
+                    alt: item.title + " After",
+                  }}
                 />
-                <h4 className="mb-2 text-xl font-bold leading-tight tracking-tight">
-                  {item.title}
-                </h4>
-                <p className="mb-6 text-gray-500">{item.description}</p>
               </div>
             ))}
           </div>

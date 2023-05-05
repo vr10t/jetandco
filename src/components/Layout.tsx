@@ -12,9 +12,9 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
     <>
       <title>{title}</title>
 
-      <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <Navbar />
-        <main className="flex flex-1 flex-col items-center justify-center px-20 text-center">
+        <main className="flex max-w-full flex-col items-center justify-center text-center lg:px-20">
           {children}
         </main>
         <Footer />
