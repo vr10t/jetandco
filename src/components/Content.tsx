@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import Carousel, { type CarouselProps } from "./Carousel";
-import ImageSlider from "react-before-after-slider-component";
+import ImageSlider from "react-node-before-after-slider-component";
+import "react-node-before-after-slider-component/dist/build.css";
 
 interface Section1Props {
   title: string;
@@ -35,11 +36,11 @@ const Section1: React.FC<Section1Props> = ({
             <div className="relative w-full lg:w-1/2 ">
               <div className="relative h-[30rem] rounded-lg shadow-lg">
                 <Image
-                  unoptimized
                   src={"/" + image}
                   className="rounded-lg object-cover shadow-lg"
                   alt={image.replace(/.*\//, "")}
                   fill
+                  sizes="(max-width: 639px) 100vw, (max-width: 1079px) 100vw, 1079px"
                 />
               </div>
             </div>
@@ -313,14 +314,16 @@ const GallerySection: React.FC<GallerySectionProps> = ({ items }) => {
                 </div>
                 <ImageSlider
                   className=""
-                  secondImage={{
-                    imageUrl: item.image.before,
-                    alt: item.title + " Before",
-                  }}
-                  firstImage={{
-                    imageUrl: item.image.after,
-                    alt: item.title + " After",
-                  }}
+                  secondComponent={
+                    <div className="relative w-72 h-64">
+                    <Image className="object-cover" fill src={"/"+item.image.before} alt={item.title + " Before"} />
+                    </div>
+                  }
+                  firstComponent={
+                    <div className="relative w-72 h-64">
+                  <Image className="object-cover" fill src={"/"+item.image.after} alt={item.title + " After"} />
+                  </div>
+                  }
                 />
               </div>
             ))}

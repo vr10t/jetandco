@@ -16,8 +16,8 @@ const MainPage: React.FC = () => {
         items={[
           {
             image: {
-              before: "driveway-clean-before.jpg",
-              after: "driveway-clean-after.jpg",
+              before: "driveway-clean-before.webp",
+              after: "driveway-clean-after.webp",
             },
             title: "Driveway Cleaning",
             description:
@@ -25,8 +25,8 @@ const MainPage: React.FC = () => {
           },
           {
             image: {
-              before: "deck-cleaning-before.jpg",
-              after: "deck-cleaning-after.jpg",
+              before: "deck-cleaning-before.webp",
+              after: "deck-cleaning-after.webp",
             },
             title: "Exterior Cleaning",
             description:
@@ -34,8 +34,8 @@ const MainPage: React.FC = () => {
           },
           {
             image: {
-              before: "pavement-cleaning-before.jpg",
-              after: "pavement-cleaning-after.jpg",
+              before: "pavement-cleaning-before.webp",
+              after: "pavement-cleaning-after.webp",
             },
             title: "Concrete Cleaning",
             description:
@@ -53,10 +53,10 @@ const MainPage: React.FC = () => {
           a thorough and efficient clean, leaving your driveway looking as good as
           new."
         checkmarks={["Driveway cleaning", "Patio cleaning", "Deck cleaning"]}
-        image="pressure-washer-cleaning-a-weathered-deck.png"
+        image="pressure-washer-cleaning-a-weathered-deck.webp"
       />
       <Section1
-        image="washes-away-dirt-with-water-pressure-rust-remover.png"
+        image="washes-away-dirt-with-water-pressure-rust-remover.webp"
         title=" Find Pressure Washing in Your Area "
         text1="If you're searching for 'pressure washing in my area', look no further.
         Our pressure washing services are available throughout Hemel Hempstead
@@ -68,25 +68,25 @@ const MainPage: React.FC = () => {
       <CarouselWithContent
         items={[
           {
-            image: "roof-cleaning.jpg",
+            image: "roof-cleaning.webp",
             title: "Roof Cleaning",
             description:
               "Remove moss, algae, and dirt gently with our expert roof cleaning service.",
           },
           {
-            image: "driveway-clean-after.jpg",
+            image: "driveway-clean-after.webp",
             title: "Driveway Cleaning",
             description:
               "Revitalize your driveway with our pressure washing and optional sealing services.",
           },
           {
-            image: "tiles-half.jpeg",
+            image: "tiles-half.webp",
             title: "Exterior Cleaning",
             description:
               "Enhance curb appeal with our comprehensive exterior cleaning for walls and fences.",
           },
           {
-            image: "removing-dirt-1.jpeg",
+            image: "removing-dirt-1.webp",
             title: "Concrete Cleaning",
             description:
               "Restore concrete surfaces like walkways, patios, and parking lots with our pressure washing.",
@@ -116,6 +116,7 @@ const MainPage: React.FC = () => {
               <img
                 className="h-32 w-32 object-scale-down object-center"
                 src="undraw_lives_matter_38lv.svg"
+                alt="Community-Based and Operated"
               />
             ),
           },
@@ -126,6 +127,7 @@ const MainPage: React.FC = () => {
               <img
                 className="h-32 w-32 object-scale-down object-center"
                 src="undraw_security_on_re_e491.svg"
+                alt="Absolute Satisfaction Assurance"
               />
             ),
           },
@@ -136,6 +138,7 @@ const MainPage: React.FC = () => {
               <img
                 className="h-32 w-32 object-scale-down object-center"
                 src="undraw_environment_iaus.svg"
+                alt="Eco-Friendly Approach"
               />
             ),
           },
@@ -146,6 +149,7 @@ const MainPage: React.FC = () => {
               <img
                 className="h-32 w-32 object-scale-down object-center"
                 src="undraw_certificate_re_yadi.svg"
+                alt="Expertise and Professionalism"
               />
             ),
           },

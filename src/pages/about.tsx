@@ -1,8 +1,16 @@
+import { NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/Layout";
 
-export default function About() {
+const About: NextPage = () => {
   return (
+    <>
+    <Head>
+      <title>About Us</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta name="description" content="Jet & Co. is a family owned and operated business that specializes in residential and commercial pressure washing. We are located in the heart of the DFW metroplex and service the entire Dallas/Fort Worth area. We are fully insured and guarantee our work. We offer a variety of services including: Driveway Cleaning, House Washing, Gutter Cleaning, Window Cleaning, and much more. We are committed to providing the highest quality service at an affordable price. We look forward to serving you!" />
+    </Head>
     <Layout title="About Us">
       <section className="body-font text-gray-700 ">
         <div className="container mx-auto flex flex-col items-center justify-center object-contain ">
@@ -13,7 +21,7 @@ export default function About() {
             <Image
               className="rounded object-cover brightness-75 object-center"
               fill
-              src="/washes-away-dirt-with-water-pressure-rust-remover.png"
+              src="/washes-away-dirt-with-water-pressure-rust-remover.webp"
               alt="About Us"
             />
           </div>
@@ -37,7 +45,7 @@ export default function About() {
             <Image
               className="rounded object-cover w-full h-full"
               fill
-              src="/modern-aluminium-carport-pressure-washing.png"
+              src="/modern-aluminium-carport-pressure-washing.webp"
               alt="pressure washing carport"
             />
           </div>
@@ -61,7 +69,7 @@ export default function About() {
             <Image
               className="rounded object-cover"
               fill
-              src="/couple-standing-outside-clean-house.png"
+              src="/couple-standing-outside-clean-house.webp"
               alt="couple standing outside clean house"
             />
           </div>
@@ -87,7 +95,7 @@ export default function About() {
             <Image
               className="rounded object-cover object-center"
               fill
-              src="/professional-pressure-washer.png"
+              src="/professional-pressure-washer.webp"
               alt="professional pressure washer"
             />
             </div>
@@ -101,7 +109,7 @@ export default function About() {
                 team members. This commitment to excellence allows us to provide
                 unparalleled service quality to our clients, leaving a trail of
                 satisfied customers who are proud to recommend us to their
-                friends and family. Choose [Your Company Name] for all your
+                friends and family. Choose Jet & Co for all your
                 exterior cleaning needs, and experience the difference that
                 comes with working with a trusted and professional pressure
                 washing company.
@@ -111,5 +119,6 @@ export default function About() {
         </section>
       </section>
     </Layout>
+</>
   );
 }

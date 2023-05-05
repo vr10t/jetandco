@@ -2,8 +2,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import BeforeAfterImage from "./BeforeAfterImage";
-import ImageSlider from "react-before-after-slider-component";
-import "react-before-after-slider-component/dist/build.css";
 
 export interface CarouselProps {
   items: {
@@ -64,9 +62,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                     alt={item.title}
                   />
               </div>
-              <h4 className="font-heading mb-3 mt-6 text-xl font-bold">
+              <h3 className="font-heading mb-3 mt-6 text-xl font-bold">
                 {item.title}
-              </h4>
+              </h3>
               <p className="mb-0 leading-loose text-gray-500">
                 {item.description}
               </p>
@@ -77,6 +75,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
       <button
         onClick={prevItem}
         className="absolute left-0 top-1/2 -translate-y-1/2 transform rounded-md bg-gray-300 bg-opacity-50 p-2"
+        type="button"
+        name="Previous"
+        aria-label="Previous"
       >
         <svg
           className="h-6 w-6 text-gray-700"
@@ -93,6 +94,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
       <button
         onClick={nextItem}
         className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-md bg-gray-300 bg-opacity-50 p-2"
+        type="button"
+        name="Next"
+        aria-label="Next"
       >
         <svg
           className="h-6 w-6 text-gray-700"
