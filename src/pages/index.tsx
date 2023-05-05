@@ -79,7 +79,13 @@ const Home: NextPage = () => {
         />
       </Head>
       <main>
-        <Navbar />
+        <Navbar
+          links={[
+            { label: "Home", href: "/" },
+            { label: "About", href: "/about" },
+            { label: "Contact", href: "/contact" },
+          ]}
+        />
         <div className="relative flex min-h-screen flex-col">
           <Image
             loading="eager"

@@ -87,10 +87,16 @@ const MainPage: React.FC = () => {
           },
           {
             image: "removing-dirt-1.webp",
-            title: "Concrete Cleaning",
+            title: "Pavement Cleaning",
             description:
               "Restore concrete surfaces like walkways, patios, and parking lots with our pressure washing.",
           },
+          {
+            image: "removing-dirt-2.webp",
+            title: "House Washing",
+            description:
+              "Remove dirt, grime, and stains from your home's exterior with our house washing service.",
+          }
         ]}
         title="
             Professional Exterior Cleaning Services
@@ -168,9 +174,9 @@ const MainPage: React.FC = () => {
       />
 
       <Jumbotron
-        title="Unparalleled Pressure Cleaning Services"
+        title="Ready to restore your property?"
         linkText="Get your free quote Now"
-        image="https://images.squarespace-cdn.com/content/v1/5c7c57e4840b1629e74fd189/1557788056855-17QEF1PZ0US9ZECTJ5MX/imag+4.jpg?format=2500w"
+        image="/roof-cleaning.webp"
         link="/contact"
       />
     </div>

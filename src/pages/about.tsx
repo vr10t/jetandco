@@ -122,3 +122,5 @@ const About: NextPage = () => {
 </>
   );
 }
+
+export default About;

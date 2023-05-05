@@ -188,9 +188,8 @@ const Jumbotron: React.FC<JumbotronProps> = ({
     <div className="container mx-auto my-24 px-6">
       <section className="mb-32">
         <div
-          className="relative overflow-hidden bg-fixed"
+          className="relative overflow-hidden bg-center bg-no-repeat"
           style={{
-            backgroundPosition: "50%",
             backgroundImage: `url('${image}')`,
             height: "500px",
           }}
@@ -305,27 +304,28 @@ const GallerySection: React.FC<GallerySectionProps> = ({ items }) => {
                 className="relative h-44  w-72 overflow-hidden rounded-lg shadow-lg"
               >
                 <div className="relative z-10 h-0 w-full bg-red-500">
-                  <div className="absolute left-2 top-4 rounded bg-black/50 px-1 text-white">
+                  <div className="absolute select-none pointer-events-none left-2 top-4 rounded bg-black/50 px-1 text-white">
                     Before
                   </div>
-                  <div className="absolute right-2 top-4 rounded bg-black/50 px-1 text-white">
+                  <div className="absolute select-none pointer-events-none right-2 top-4 rounded bg-black/50 px-1 text-white">
                     After
                   </div>
                 </div>
                 {/* eslint-disable-next-line*/}
                 {/* @ts-ignore */}
                 <ImageSlider
-                  className=""
+                  className="dragg"
                   secondComponent={
-                    <div className="relative w-72 h-64">
-                    <Image className="object-cover" fill src={"/"+item.image.before} alt={item.title + " Before"} />
+                    <div draggable={false} className="relative w-72 h-64">
+                    <Image draggable={false} className="object-cover" fill src={"/"+item.image.before} alt={item.title + " Before"} />
                     </div>
                   }
                   firstComponent={
-                    <div className="relative w-72 h-64">
-                  <Image className="object-cover" fill src={"/"+item.image.after} alt={item.title + " After"} />
+                    <div draggable={false} className="relative w-72 h-64">
+                  <Image draggable={false} className="object-cover" fill src={"/"+item.image.after} alt={item.title + " After"} />
                   </div>
                   }
+                  delimiterIconStyles={{opacity: "0"}}
                 />
               </div>
             ))}

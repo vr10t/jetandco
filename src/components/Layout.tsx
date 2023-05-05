@@ -13,7 +13,13 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
       <title>{title}</title>
 
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <Navbar />
+        <Navbar 
+          links={[
+            { label: "Home", href: "/" },
+            { label: "About", href: "/about" },
+            { label: "Contact", href: "/contact" },
+          ]}
+         />
         <main className="flex max-w-full flex-col items-center justify-center text-center lg:px-20">
           {children}
         </main>
