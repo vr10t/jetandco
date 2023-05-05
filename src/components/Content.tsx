@@ -312,6 +312,8 @@ const GallerySection: React.FC<GallerySectionProps> = ({ items }) => {
                     After
                   </div>
                 </div>
+                {/* eslint-disable-next-line*/}
+                {/* @ts-ignore */}
                 <ImageSlider
                   className=""
                   secondComponent={
