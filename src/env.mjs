@@ -12,6 +12,7 @@ export const env = createEnv({
     API_URL: z.string(),
     AUTH_USER_ID: z.string(),
     AUTH_USER_EMAIL: z.string(),
+    VERCEL_URL: z.string(),
   },
 
   /**
@@ -33,5 +34,6 @@ export const env = createEnv({
     API_URL: process.env.API_URL,
     AUTH_USER_ID: process.env.AUTH_USER_ID,
     AUTH_USER_EMAIL: process.env.AUTH_USER_EMAIL,
+    VERCEL_URL: process.env.VERCEL_URL,
   },
 });
