@@ -23,7 +23,7 @@ const Section1: React.FC<Section1Props> = ({
   reverse,
 }) => {
   return (
-    <div className="container mx-auto my-24 px-6">
+    <div className="container mx-auto my-24 sm:px-6">
       <section className="mb-32 text-gray-800">
         <div className="container relative z-10 mx-auto text-center lg:text-left xl:px-32">
           <div
@@ -185,7 +185,7 @@ const Jumbotron: React.FC<JumbotronProps> = ({
   linkText,
 }) => {
   return (
-    <div className="container mx-auto my-24 px-6">
+    <div className="container mx-auto my-24 sm:px-6">
       <section className="mb-32">
         <div
           className="relative overflow-hidden bg-center bg-no-repeat"
@@ -350,7 +350,7 @@ const CarouselWithContent: React.FC<CarouselWithContentProps> = ({
   items,
 }) => {
   return (
-    <div className="container mx-auto my-24 px-6">
+    <div className="container mx-auto my-24 px-2 sm:px-6">
       <section className="z-10 mb-24">
         <div className="-mx-6 flex flex-wrap items-center">
           <h2 className="font-heading z-10 mb-6 px-6 text-3xl font-bold lg:text-4xl">

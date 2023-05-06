@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import BeforeAfterImage from "./BeforeAfterImage";
 
 export interface CarouselProps {
   items: {
@@ -51,7 +50,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
                 index
               )}`}
             >
-              <div className="relative h-56 w-96 overflow-hidden ">
+              <div className="relative h-56 w-full sm:w-96 overflow-hidden ">
                   <Image
                     draggable={false}
                     className="h-full w-full object-cover"

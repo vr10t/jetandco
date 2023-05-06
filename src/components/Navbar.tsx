@@ -16,7 +16,7 @@ const Navbar: React.FC<Props> = ({ links }) => {
   console.log(links);
 
   return (
-    <nav className="p-6 w-full">
+    <nav className="py-2 px-6 w-full">
       <div className="flex items-center justify-between flex-wrap">
         <div className="flex items-center w-32 flex-shrink-0 mr-6">
           <div className="relative h-16 w-full">
