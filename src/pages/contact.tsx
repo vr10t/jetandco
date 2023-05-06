@@ -1,6 +1,8 @@
-import { NextPage } from "next";
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
+import { type NextPage } from "next";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 
 const Contact: NextPage = () => {
@@ -11,25 +13,53 @@ const Contact: NextPage = () => {
     postcode: "",
     message: "",
   });
+  const [error, setError] = React.useState("");
+  const [success, setSuccess] = React.useState("");
   const formRef = React.useRef<HTMLFormElement>(null);
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(formData);
+    setSuccess("");
+    setError("");
+    const response = await fetch("/api/submit", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      setError("Something went wrong");
+      return;
+    }
+
+    const data = await (response.json() as Promise<{ message: string }>);
+    if (data) {
+      setSuccess("Thank you for your request. We will get back to you soon.");
+    }
   }
+  useEffect(() => {
+    if (success) {
+      if (formRef.current) {
+        const timer = setTimeout(() => {
+          formRef.current!.reset();
+        }, 5000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [success]);
 
   return (
     <Layout title="Contact Us">
-      <div className="w-full px-8 py-24 mx-auto text-start bg-blue-100 my-12 rounded-lg grid grid-cols-1 gap-8 /50 md:grid-cols-2">
+      <div className="/50 mx-auto my-12 grid w-full grid-cols-1 gap-8 rounded-lg bg-blue-100 px-8 py-24 text-start md:grid-cols-2">
         <div className="flex flex-col justify-start">
           <div>
             <h2 className="text-4xl font-bold leading-tight lg:text-5xl">
-              Request your Free Estimate 
+              Request your Free Estimate
             </h2>
             <div className="mt-8 text-gray-700 ">
-              Get a quote by filling out the form below and we will get back to you as soon as possible.
+              Get a quote by filling out the form below and we will get back to
+              you as soon as possible.
             </div>
           </div>
-          <div className="mt-4 relative h-56 text-center">
+          <div className="relative mt-4 h-56 text-center">
             <Image
               className="object-cover"
               fill
@@ -50,17 +80,31 @@ const Contact: NextPage = () => {
                 and we will be happy to help you.
               </p>
             </div>
-            </div>
+          </div>
         </div>
-        <form onSubmit={handleSubmit} ref={formRef}>
+        <form
+          onSubmit={handleSubmit}
+          ref={formRef}
+          onReset={() => {
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+              postcode: "",
+              message: "",
+            });
+            setError("");
+            setSuccess("");
+          }}
+        >
           <div>
-            <span className="text-sm font-bold text-gray-600 uppercase ">
+            <span className="text-sm font-bold uppercase text-gray-600 ">
               Full Name <span className="text-red-500">*</span>
             </span>
             <input
               id="name"
               name="name"
-              className="w-full p-3 mt-2 rounded-lg focus:shadow-outline bg-primary-100 focus:ring-primary-400 focus:outline-none focus:ring-2 "
+              className="focus:shadow-outline bg-primary-100 focus:ring-primary-400 mt-2 w-full rounded-lg p-3 focus:outline-none focus:ring-2 "
               type="text"
               placeholder="Enter your Name"
               value={formData.name}
@@ -71,12 +115,12 @@ const Contact: NextPage = () => {
             />
           </div>
           <div className="mt-8">
-            <span className="text-sm font-bold text-gray-600 uppercase ">
+            <span className="text-sm font-bold uppercase text-gray-600 ">
               Email <span className="text-red-500">*</span>
             </span>
             <input
               id="email"
-              className="w-full p-3 mt-2 rounded-lg focus:shadow-outline bg-primary-100 focus:ring-primary-400 focus:outline-none focus:ring-2 "
+              className="focus:shadow-outline bg-primary-100 focus:ring-primary-400 mt-2 w-full rounded-lg p-3 focus:outline-none focus:ring-2 "
               type="email"
               placeholder="Enter your email address"
               value={formData.email}
@@ -87,12 +131,12 @@ const Contact: NextPage = () => {
             />
           </div>
           <div className="mt-8">
-            <span className="text-sm font-bold text-gray-600 uppercase ">
+            <span className="text-sm font-bold uppercase text-gray-600 ">
               Phone Number <span className="text-red-500">*</span>
             </span>
             <input
               id="phone"
-              className="w-full p-3 mt-2 rounded-lg focus:shadow-outline bg-primary-100 focus:ring-primary-400 focus:outline-none focus:ring-2 "
+              className="focus:shadow-outline bg-primary-100 focus:ring-primary-400 mt-2 w-full rounded-lg p-3 focus:outline-none focus:ring-2 "
               type="tel"
               placeholder="Enter your Phone Number including country code"
               value={formData.phone}
@@ -103,12 +147,12 @@ const Contact: NextPage = () => {
             />
           </div>
           <div className="mt-8">
-            <span className="text-sm font-bold text-gray-600 uppercase ">
+            <span className="text-sm font-bold uppercase text-gray-600 ">
               Post Code <span className="text-red-500">*</span>
             </span>
             <input
               id="postcode"
-              className="w-full p-3 mt-2 rounded-lg focus:shadow-outline bg-primary-100 focus:ring-primary-400 focus:outline-none focus:ring-2 "
+              className="focus:shadow-outline bg-primary-100 focus:ring-primary-400 mt-2 w-full rounded-lg p-3 focus:outline-none focus:ring-2 "
               type="text"
               value={formData.postcode}
               onChange={(e) =>
@@ -120,12 +164,12 @@ const Contact: NextPage = () => {
           </div>
 
           <div className="mt-8">
-            <span className="text-sm font-bold text-gray-600 uppercase ">
+            <span className="text-sm font-bold uppercase text-gray-600 ">
               Message
             </span>
             <textarea
               id="message"
-              className="w-full h-32 p-3 mt-2 rounded-lg focus:shadow-outline bg-primary-100 focus:ring-primary-400 focus:outline-none focus:ring-2 "
+              className="focus:shadow-outline bg-primary-100 focus:ring-primary-400 mt-2 h-32 w-full rounded-lg p-3 focus:outline-none focus:ring-2 "
               placeholder="Enter your Message"
               value={formData.message}
               onChange={(e) =>
@@ -134,8 +178,18 @@ const Contact: NextPage = () => {
             ></textarea>
           </div>
           <div className="mt-8">
+            <div className="flex items-center">
+              {error && (
+                <div className="text-sm font-bold text-red-500">{error}</div>
+              )}
+              {success && (
+                <div className="text-sm font-bold text-green-500">
+                  {success}
+                </div>
+              )}
+            </div>
             <button
-              className="w-full p-3 text-sm font-bold tracking-wide text-gray-700 uppercase rounded-lg focus:shadow-outline bg-blue-300 hover:bg-primary-700 focus:outline-none"
+              className="focus:shadow-outline hover:bg-primary-700 w-full rounded-lg bg-blue-300 p-3 text-sm font-bold uppercase tracking-wide text-gray-700 focus:outline-none"
               type="submit"
             >
               Send Message

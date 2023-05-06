@@ -8,6 +8,10 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    JWT_SECRET: z.string(),
+    API_URL: z.string(),
+    AUTH_USER_ID: z.string(),
+    AUTH_USER_EMAIL: z.string(),
   },
 
   /**
@@ -25,6 +29,9 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    JWT_SECRET: process.env.JWT_SECRET,
+    API_URL: process.env.API_URL,
+    AUTH_USER_ID: process.env.AUTH_USER_ID,
+    AUTH_USER_EMAIL: process.env.AUTH_USER_EMAIL,
   },
 });

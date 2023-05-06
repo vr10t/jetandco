@@ -1,4 +1,4 @@
 
 User-agent: *
 Disallow: /api/*
-Sitemap: https://aclasstaxis.co.uk/sitemap.xml
+Sitemap: https://jetandco.co.uk/sitemap.xml

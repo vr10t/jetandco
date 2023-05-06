@@ -51,11 +51,9 @@ const Home: NextPage = () => {
           "Wednesday",
           "Thursday",
           "Friday",
-          "Saturday",
-          "Sunday",
         ],
-        opens: "07:00",
-        closes: "19:00",
+        opens: "09:00",
+        closes: "17:00",
       },
     ],
   };
@@ -103,7 +101,7 @@ const Home: NextPage = () => {
             <p className="mt-3 max-w-2xl font-hepta text-2xl text-white sm:mt-5 sm:text-4xl">
               Your Satisfaction is Our Priority.
             </p>
-            <button className="btn">Book Now</button>
+            <Link href="/contact" className="btn">Book Now</Link>
           </div>
         </div>
         <MainPage />
